@@ -11,9 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 
-RUN pip install --upgrade pip 
-
-RUN apt clean && \
+RUN pip install --upgrade pip && \
+    apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /root/.cache
 
