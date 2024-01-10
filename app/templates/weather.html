@@ -1,0 +1,20 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2 class="title">Weather Information</h2>
+    <form method="POST" action="/weather">
+        <label for="city_name" class="label">Enter a city name:</label>
+        <input type="text" id="city_name" name="city_name" class="input" required>
+        <input type="submit" value="Get Weather" class="button">
+    </form>
+    {% if weather_data %}
+    <div class="weather-info">
+        <p class="city">City: {{ weather_data.city }}</p>
+        <p class="temperature">Temperature: {{ weather_data.temperature }}°C</p>
+        <p class="description">Description: {{ weather_data.description }}</p>
+        <p class="humidity">Humidity: {{ weather_data.humidity }}%</p>
+        <p class="wind-speed">Wind Speed: {{ weather_data.wind_speed }} m/s</p>
+    </div>
+    {% endif %}
+{% endblock %}

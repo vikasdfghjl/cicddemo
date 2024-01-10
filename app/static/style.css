@@ -1,0 +1,75 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+    color: #333;
+}
+
+.label, .input, .button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.input, .button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.weather-info {
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in;
+}
+
+.city, .temperature, .description, .humidity, .wind-speed {
+    margin: 10px 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 48px;
+    color: #007BFF; /* Choose your desired color */
+    background-color: #f7f7f7; /* Choose your desired background color */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
+}
