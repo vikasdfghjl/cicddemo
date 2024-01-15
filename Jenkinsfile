@@ -3,6 +3,7 @@ pipeline {
     environment{
         HOME = "${env.WORKSPACE}"
         DOCKER_IMAGE_NAME = "vikasdfghjl/cicddemo"
+        PORT="4000"
     }
 
     stages{
@@ -34,6 +35,23 @@ pipeline {
 
                         
                         app.push("${BUILD_NUMBER}")
+                }
+            }
+        }
+
+        stage("Deploy"){
+            steps{
+                script{
+                    
+                        sh 'exit'
+
+                        withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDS', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                        
+                        sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
+
+                        sh 'docker run -d -p ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}'
+
+                  
                 }
             }
         }

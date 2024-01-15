@@ -8,6 +8,9 @@ COPY requirements.txt  .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+ARG API_KEY=default_api_key
+ENV API_KEY=$API_KEY
+
 COPY . .
 
 
