@@ -38,11 +38,11 @@ pipeline {
                 }
             }
         }
+    }
 
         stage("Deploy"){
             steps{
-                script{
-                    
+                script{                    
                         sh 'exit'
 
                         withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDS', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
@@ -50,13 +50,9 @@ pipeline {
                         sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
 
                         sh 'docker run -d -p ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}'
-
-                  
+                    }
                 }
             }
         }
-
-        
     }
-}
 }
