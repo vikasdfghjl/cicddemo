@@ -51,7 +51,7 @@ pipeline {
 
                         sh 'docker ps -q --filter "ancestor=${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}" | xargs -r docker stop'
 
-                        sh 'docker run -d -p --name k8s-demo ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}'
+                        sh 'docker run -d --name k8s-demo -p ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}'
                     }
                 }
             }
