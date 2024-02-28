@@ -56,7 +56,7 @@ pipeline {
         }
     }
 
-    Post{
+    post{
         always{
             // Send notification  on always
         }
