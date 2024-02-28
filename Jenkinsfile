@@ -57,9 +57,7 @@ pipeline {
     }
 
     post{
-        always{
-            // Send notification  on always
-        }
+        
         success{
             // Send notification on success
             successNotifier(subject: 'Flask App Build Successful', 
