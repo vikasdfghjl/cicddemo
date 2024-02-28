@@ -55,4 +55,22 @@ pipeline {
             }
         }
     }
+
+    Post{
+        always{
+            // Send notification  on always
+        }
+        success{
+            // Send notification on success
+            successNotifier(subject: 'Flask App Build Successful', 
+                            body: 'Your Flask app build was successful!')
+
+        }
+        failure{
+            // Send notification on failure
+            failureNotifier(subject: 'Flask App Build Failed', 
+                            body: 'Your Flask app build failed! Check the logs for details.')
+
+        }
+    }
 }
