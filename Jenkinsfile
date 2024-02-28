@@ -49,7 +49,7 @@ pipeline {
                         
                         sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
 
-                        sh 'docker ps -q --filter "ancestor=${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}" | xargs -r docker stop'
+                        sh 'docker ps -q --filter "name=k8s-demo" | xargs -r docker stop'
 
                         sh 'docker run -d --name k8s-demo -p ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}'
                     }
