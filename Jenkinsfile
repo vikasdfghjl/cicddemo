@@ -49,7 +49,7 @@ pipeline {
                         
                         sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
 
-                        sh 'docker stop k8s-demo'
+                        sh 'docker stop k8s-demo || echo "Running updated Image"'
 
                         sh 'docker run -d -p --name k8s-demo ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}'
                     }
