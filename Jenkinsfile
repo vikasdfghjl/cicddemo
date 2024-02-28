@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         HOME = "${env.WORKSPACE}"
-        DOCKER_IMAGE_NAME = "vikasdfghjl/cicddemo"
+        DOCKER_IMAGE_NAME = "vikasdfghjl/python-weather-app"
         PORT="4000"
     }
 
@@ -30,7 +30,7 @@ pipeline {
                         
                         sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
 
-                        def app = docker.build("vikasdfghjl/cicddemo")
+                        def app = docker.build("vikasdfghjl/python-weather-app")
                         //sh "docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER} ."
 
                         
