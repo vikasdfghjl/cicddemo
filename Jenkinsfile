@@ -28,7 +28,7 @@ pipeline {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDS', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                         
-                        sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
+                        sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u --name vikasapp "$DOCKERHUB_USERNAME" --password-stdin'
 
                         def app = docker.build("vikasdfghjl/python-weather-app")
                         //sh "docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER} ."
@@ -48,6 +48,8 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDS', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                         
                         sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
+
+                        sh 'docker stop vikasapp'
 
                         sh 'docker run -d -p ${PORT}:${PORT} ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}'
                     }
